@@ -32,5 +32,32 @@ This script constructs subject-level voxel-by-contrast matrices from previously 
 
 ---
 
+# `clustering_{EXPT}.ipynb`
 
+Main clustering notebook and needs to be customized for different experiments. 
 
+## Example Inputs
+
+- Clean voxel-by-contrast matrices:  
+  `SyntCat/clean_matrix_all_runs/<subject>.npy`
+- Corresponding fROI index maps:  
+  `SyntCat/clean_matrix_all_runs/<subject>_froi_map.npy`
+
+## Analysis Workflow
+
+### 1. Load Voxel Matrices
+Loads cleaned voxel-by-contrast matrices from all subjects and stacks them together.
+
+### 2. Sanity Checks
+Checks NaN values, plot the mean of each contrast matrix, plot each subject's correlation with the mean of N-1 subjects.
+
+### 3. K-Means Clustering
+- SSE elbow graph to decide K
+- Runs K-means clustering
+
+### 4. Visualizing Clusters
+- Plots:
+  - Proportions of N voxels in each fROIs, and proportions of fROIs in each of N voxels
+  - Number of voxels in each cluster
+  - Response profiles within each cluster, averaged over fROIs
+  - Response profiles within each cluster, for each fROI
