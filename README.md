@@ -119,7 +119,40 @@ Four core plot families interpret the result:
 
 ## 6. Results Summary
 
-The bottom line from the SWJN arc is a **robust null with respect to the original hypothesis**. Across `SWJN_deluxe`, `SWJNV2`, and `Nlength_con2` — and a combined n=88 "mega" analysis — clusters reproduced the same S>W>J>N shape, differing mainly in **overall magnitude** (ordering by amplitude: high/med/low/int). No stable, clean dissociation of syntax from lexical semantics emerged at the voxel level. Profiles replicated strongly across datasets and across K — strong replicability, but of a single blended pattern rather than the hoped-for functional sub-types.
+### 6.1 SWJN — The Main Result
+
+The bottom line from the SWJN arc is a **robust null with respect to the original hypothesis**. Across `SWJN_deluxe` (n=22), `Nlength_con2`, `SWJNV2` (n=26), and the combined **n=88 mega-analysis**, clustering kept recovering the **same graded S>W>J>N profile**, with clusters separating mainly by **overall response magnitude** rather than by profile shape. Clusters are labeled by amplitude band — **high / med / low / INT** — where INT ("interesting") is the lowest-responding cluster and the one that comes closest to an S>everything_else (compositional-looking) profile. No clean, stable dissociation of syntax from lexical semantics emerged at the voxel level. The pattern replicated across datasets and across K (k=2 and k=6 gave the same standard profiles as k=4) — strong replicability, but of a single blended pattern rather than the hoped-for functional sub-types.
+
+**Cross-dataset consistency in the by-cluster / by-fROI plots** (Dec 2024 slides): the INT cluster is repeatedly the **largest** cluster (noted as cool but unexplained); PostTemp contributes to nearly all clusters while AntTemp contributes selectively to the two lowest-responding clusters including INT; and faint frontal syntax hints (an S>J>others profile in IFG/IFGorb) appear but are annotated as "so weak" the authors were unsure whether to read into them. These held under the RH-mask fix for the one right-lateralized outlier (subject 1013) and in the n=88 pooled run.
+
+### 6.2 SWJN — Reliability & Robustness Checks
+
+- **Within-subject (odd vs. even runs).** Cluster profiles were stable across odd/even split-halves. Because K-means labels are arbitrary across runs, odd clusters were **manually matched** to even ones (e.g. Odd 0→Even 2, 1→3, 2→1, 3→0) before overlaying profiles. Odd-run profiles sat slightly higher in overall magnitude, consistent with the amplitude-driven clustering.
+
+- **Across-subject (first vs. second half).** Profiles, cluster sizes, and composition reproduced across the two halves of subjects, with the INT cluster largest in batch 1 and second-largest in batch 2 — broadly stable, not identical.
+
+- **Normalization controls.** Two schemes were tried: per-voxel mean-subtraction **before** clustering, and per-cluster normalization **after**. Mean-normalization **did not collapse** the magnitude-banded clusters as expected — itself treated as a puzzling, informative result and the central reason the team suspected magnitude was doing most of the work.
+
+- **Algorithm & K controls.** Hierarchical clustering (Ward/Euclidean) preserved similar profiles; spectral clustering did not and was judged less suitable for fMRI. Across four K-selection metrics, K=2 was mathematically optimal; K=4 was used as the primary working K.
+
+### 6.3 SyntCat — What the Slides Report
+
+SyntCat (N=16) clusters voxels by **part-of-speech** (N, AJ, V, AV, FW) rather than by linguistic level, using the same five-core-LH-fROI, langloc-masked pipeline.
+
+- **K selection.** WCSS/elbow flattens after K=4 (→ k=3–4); silhouette favors K=2 (→ k=2–3). The analysis starts with **K=3** as the trade-off (K=2 = clean but coarse; K=4 = more nuanced but acceptable).
+
+- **Sanity check caveat.** The inter-subject similarity check (each subject's 5-condition profile correlated to the group mean) is explicitly flagged as **not looking great** — the author raises whether some subjects should be excluded. SyntCat therefore rests on a noisier subject set than SWJN, by the author's own note.
+
+- **Spatial echo of SWJN.** The ROI-proportion plot shows the **same ~equal PostTemp/AntTemp participation in the lowest-responding cluster** seen in SWJN, with an open question of whether this reflects AntTemp signal dropout rather than function.
+
+- **POS response profiles: unconfirmed.** The cluster-profile plots carry no caption text — they are figures only. The actual POS response profiles (e.g. whether any cluster shows noun- or verb-selectivity) need to be confirmed directly from the notebook output. **[CONFIRM from plots]**
+
+### 6.4 Caveats the Authors Themselves Flagged
+
+- The INT / compositional-looking cluster is also the lowest-responding one; sub-baseline negative values are hard to interpret as "selectivity."
+- Frontal syntax hints (S>J in IFG/IFGorb) are "so weak" the authors were unsure whether to read into them.
+- Because K-means keys on Euclidean distance, several "clusters" may simply be amplitude bands of one underlying population — the central unresolved methodological worry, reinforced by normalization failing to collapse them.
+- AntTemp's selective contribution to low-responding clusters may reflect **signal dropout** in anterior temporal cortex rather than a functional property — raised for both SWJN and SyntCat.
 
 ---
 
