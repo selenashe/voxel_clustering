@@ -135,15 +135,19 @@ The bottom line from the SWJN arc is a **robust null with respect to the origina
 
 - **Algorithm & K controls.** Hierarchical clustering (Ward/Euclidean) preserved similar profiles; spectral clustering did not and was judged less suitable for our data type. Across four K-selection metrics, K=2 was mathematically optimal; K=4 was used as the primary working K.
 
-### 6.3 SyntCat — What the Slides Report
+### 6.3 SyntCat — The Main Result
 
-SyntCat (N=16) clusters voxels by **part-of-speech** (N, AJ, V, AV, FW) rather than by linguistic level, using the same five-core-LH-fROI, langloc-masked pipeline.
+SyntCat grew directly out of the SWJN null: voxel clustering on SWJN didn't yield much but the pipeline existed, so we ran it on **part-of-speech**. Earlier **fROI-level** analyses of responses to nouns, verbs, adjectives, and adverbs (words in isolation) had shown litte interpretable (?); the hope was that **voxel clustering might recover neural populations tuned to particular POS**. The data are the `SyntCat` experiment (FMP, **N=16**, collected 1/21/14–3/10/15; a separate `SyntCat2`, N=18, was set aside). Responses are **condition-level** estimates — five values per voxel (`N, AJ, V, AV, FW`) — over langloc voxels in the five core LH fROIs. The 18 raw columns (N/AJ/V/AV in four frequency bins hi/hm/lm/lo, FW in two hi/lo) are **averaged within each POS** before clustering.
 
-- **K selection.** WCSS/elbow flattens after K=4 (→ k=3–4); silhouette favors K=2 (→ k=2–3). The analysis starts with **K=3** as the trade-off (K=2 = clean but coarse; K=4 = more nuanced but acceptable).
+**Headline finding (K=3): function-word selectivity.** The result singled out by both authors as the interesting one is the existence of clusters defined by **function words**: some clusters show an `FW > all other POS` profile, and at least one shows the inverse, `FW < all other POS`. This is the kind of POS-tuned structure the fROI-level analysis missed, and it is qualitatively different from the SWJN outcome (where clusters differed mainly in magnitude, not shape). One follow-up I raised in-thread is whether the morphologically simple `AV` (adverb) condition would show a similar pattern to FW.
 
-- **Sanity check caveat.** The inter-subject similarity check (each subject's 5-condition profile correlated to the group mean) was explicitly flagged as **not looking great** and we discussed whether to exclude some subjects. SyntCat therefore rests on a noisier subject set than SWJN.
+**Scope of the result:**
+- Only **K=3 was actually run** for this summary, chosen from the elbow/silhouette diagnostics. K=2 and K=4 are set up in the notebook but were not the basis of the reported FW finding. The committed cluster labels are magnitude-based (`{0: med, 1: high, 2: low}`); the FW>all / FW<all observation is a **profile-shape** reading layered on top of those magnitude bands.
+- **Sanity check.** The inter-subject similarity check (each subject's 5-condition profile correlated to the group mean) was explicitly flagged as **not great**, and whether to exclude some subjects was left open. SyntCat therefore rests on a noisier subject set than SWJN.
 
-- **Spatial echo of SWJN.** The ROI-proportion plot shows the **same ~equal PostTemp/AntTemp participation in the lowest-responding cluster** seen in SWJN, with an open question of whether this reflects AntTemp signal dropout rather than function.
+**Spatial echo of SWJN.** The ROI-proportion plot shows the **same ~equal PostTemp/AntTemp participation in the lowest-responding cluster** seen in SWJN, with an open question of whether this reflects AntTemp signal dropout rather than function.
+
+**Open follow-ups (requested in email chain Jul 13, 2025):** (1) split the 16 subjects into **two sets of 8** and re-cluster; (2) run the **identical analysis on the RH language fROIs**; (3) confirm whether the data are modeled at **block vs. condition level**, with a view to MVPA-type analyses on the voxels in the `med` cluster; (4) clarify whether `SyntCat2` includes FW or only N/V/Adj/Adv.
 
 ### 6.4 Caveats We Flagged
 
@@ -151,6 +155,7 @@ SyntCat (N=16) clusters voxels by **part-of-speech** (N, AJ, V, AV, FW) rather t
 - Frontal syntax hints (S>J in IFG/IFGorb) are "so weak" we were unsure whether to read into them.
 - Because K-means keys on Euclidean distance, several "clusters" may simply be amplitude bands of one underlying population — the central unresolved methodological worry, reinforced by normalization failing to collapse them.
 - AntTemp's selective contribution to low-responding clusters may reflect **signal dropout** in anterior temporal cortex rather than a functional property — raised for both SWJN and SyntCat.
+- The SyntCat FW-selectivity result is from a **single K=3 run on a subject set flagged as noisy**; treat it as a promising lead to validate (split-half, RH fROIs, K robustness), not a settled finding.
 
 ---
 
